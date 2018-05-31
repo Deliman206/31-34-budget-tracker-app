@@ -2,11 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import autoBind from '../../utils/';
 
-// Vinicio - this is UI state. Everything (but the store) is UI state from now own.
 const defaultState = {
   title: '',
 };
-
 
 class SectionForm extends React.Component {
   constructor(props) {
@@ -25,6 +23,7 @@ class SectionForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.onComplete(this.state);
+    this.setState({ title: '' });
   }
   //-----------------------------------------------------
   // LIFE CYCLE HOOKS
