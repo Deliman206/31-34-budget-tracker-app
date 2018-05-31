@@ -28,7 +28,7 @@ Landing.propTypes = {
 const mapStateToProps = (state) => {
   // vinicio - the object we return WILL BECOME PROPS for landing
   return {
-    sections: state,
+    sections: state.sections,
   };
 };
 

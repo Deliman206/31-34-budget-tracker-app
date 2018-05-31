@@ -28,6 +28,13 @@ class SectionForm extends React.Component {
   //-----------------------------------------------------
   // LIFE CYCLE HOOKS
   //-----------------------------------------------------
+  // static getDerivedStateFromProps(nextProps) {
+  //   if (nextProps.section) {
+  //     // it's like this.setState is happening
+  //     return nextProps.section;
+  //   }
+  //   return defaultState;
+  // }
   render() {
     const buttonText = this.props.section ? 'Update' : 'Create';
     return (

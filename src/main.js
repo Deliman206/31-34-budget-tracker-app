@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import App from './component/app/app';
-import sectionsReducer from './reducer/section';
+import sectionsReducer from './reducer/main';
 import './styles/main.scss';
 
 //------------------------------------------------------------

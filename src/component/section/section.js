@@ -19,17 +19,23 @@ class Section extends React.Component {
       sectionRemove,
       sectionUpdate,
     } = this.props;
-    console.log(this.props);
-    const sectionCards = cards[section.id];
+    
+    let sectionCards = null;
+    if (this.props.cards) {
+      sectionCards = cards[section.id];
+    }
     return (
       <div className='section' key={key}>
         <h1> { section.title } </h1>
         <button onClick={() => sectionRemove(section)}> Delete </button>
         <SectionForm section={section} onComplete={sectionUpdate}/>
         <CardForm section={section} onComplete={cardCreate} />
-        <div className="card-list">
+        {
+          this.props.cards ? <div className="card-list">
           { sectionCards.map(card => <Card card={card} key={card.id} />) }
-        </div>
+        </div> : <div className="card-list"></div>
+        }
+       
       </div>
     );
   }
