@@ -7,7 +7,6 @@ import * as cardActions from '../../action/card';
 class Card extends React.Component {
   render() {
     const { card, cardRemove, cardUpdate } = this.props;
-    console.log(this.props, 'CARD PROPS')
     return (
       <div className="card">
         <p> { card.content} </p>

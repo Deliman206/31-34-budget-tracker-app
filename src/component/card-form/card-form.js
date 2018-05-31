@@ -19,12 +19,6 @@ export default class CardForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     const sectionId = this.props.section ? this.props.section.id : this.props.card.sectionId;
-
-    // spread operator is equal to passing in this object
-    // {
-    //   content: 'some content',
-    //   sectionId: sectionId,
-    // }
     this.props.onComplete({
       ...this.state,
       sectionId,
@@ -44,7 +38,7 @@ export default class CardForm extends React.Component {
         <input 
           type="text"
           name="content"
-          placeholder="beans"
+          placeholder="+ Card"
           value={this.state.content}
           onChange={this.handleChange}
         />

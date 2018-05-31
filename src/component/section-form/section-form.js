@@ -17,13 +17,13 @@ class SectionForm extends React.Component {
   //-----------------------------------------------------
   handleChange(event) {
     const { value } = event.target;
-    this.setState({ title: value });
+    this.setState({ title: value });   
   }
 
   handleSubmit(event) {
     event.preventDefault();
     this.props.onComplete(this.state);
-    this.setState({ title: '' });
+    this.setState(defaultState);
   }
   //-----------------------------------------------------
   // LIFE CYCLE HOOKS

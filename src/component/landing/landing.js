@@ -8,7 +8,6 @@ import Section from '../section/section';
 //--------------------------------------------------------------
 class Landing extends React.Component {
   render() {
-    // Vinicio - in the component, our state is linked AS PROPS
     const { sections, sectionCreate } = this.props;
     return (
       <div className='landing'>
