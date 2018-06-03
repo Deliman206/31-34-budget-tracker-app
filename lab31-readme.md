@@ -17,9 +17,12 @@ Install the dependancies
 ```npm i```
 
 Run the test to validate the program functionality
+
+In one terminal window run the following:
+```npm run watch```
+
+In a second terminal run the following:
 ```npm run test```
 
-Launch the application in localhost
-```npm run watch```
 
 

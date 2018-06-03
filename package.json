@@ -4,7 +4,9 @@
   "description": "401 JS --  Lab 31 Budget Tracker ===",
   "main": "index.js",
   "scripts": {
-    "watch": "webpack-dev-server --config webpack.dev.js"
+    "watch": "webpack-dev-server --config webpack.dev.js",
+    "test": "cypress open",
+    "cypress:open": "cypress open"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

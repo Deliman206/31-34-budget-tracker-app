@@ -44,7 +44,7 @@ class SectionForm extends React.Component {
         <input
           type='text'
           name='title'
-          placeholder='Title'
+          placeholder='Expense'
           value={this.state.title}
           onChange={this.handleChange}
         />
@@ -55,7 +55,7 @@ class SectionForm extends React.Component {
           value={this.state.cost}
           onChange={this.handleChange}
         />
-        <button type='submit'>{buttonText} Section</button>
+        <button type='submit'>{buttonText} Expense</button>
 
       </form>
     );
