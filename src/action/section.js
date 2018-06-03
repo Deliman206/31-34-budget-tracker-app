@@ -1,8 +1,9 @@
 // Vinicio - We are creating a set of functions to simplify creating actions.
-const create = ({ title }) => ({
+const create = ({ title, cost }) => ({
   type: 'SECTION_CREATE',
   payload: {
     title,
+    cost,
     id: Math.random(),
     createdOn: new Date(),
   },

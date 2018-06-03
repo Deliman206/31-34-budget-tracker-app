@@ -4,6 +4,7 @@ import autoBind from '../../utils/';
 
 const defaultState = {
   title: '',
+  cost: '',
 };
 
 class SectionForm extends React.Component {
@@ -16,14 +17,19 @@ class SectionForm extends React.Component {
   // MEMBER FUNCTIONS
   //-----------------------------------------------------
   handleChange(event) {
-    const { value } = event.target;
-    this.setState({ title: value });
+    const { value, name } = event.target;
+    if (name === 'title') {
+      this.setState({ title: value });
+    }
+    if (name === 'cost') {
+      this.setState({ cost: value });
+    }
   }
 
   handleSubmit(event) {
     event.preventDefault();
     this.props.onComplete(this.state);
-    this.setState({ title: '' });
+    this.setState(defaultState);
   }
   //-----------------------------------------------------
   // LIFE CYCLE HOOKS
@@ -40,6 +46,13 @@ class SectionForm extends React.Component {
           name='title'
           placeholder='Title'
           value={this.state.title}
+          onChange={this.handleChange}
+        />
+        <input
+          type='number'
+          name='cost'
+          placeholder='Cost'
+          value={this.state.cost}
           onChange={this.handleChange}
         />
         <button type='submit'>{buttonText} Section</button>

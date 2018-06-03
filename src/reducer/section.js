@@ -1,7 +1,6 @@
 const emptyState = [];
 
 export default (state = emptyState, { type, payload }) => {
-  // TODO : Validation
   switch (type) {
     case 'SECTION_CREATE':
       return [...state, payload];

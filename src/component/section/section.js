@@ -15,6 +15,7 @@ class Section extends React.Component {
     return (
       <div className='section' key={key}>
         <h1> { section.title } </h1>
+        <h2> ${ section.cost } </h2>
         <button onClick={() => sectionRemove(section)}> Delete </button>
         <SectionForm section={section} onComplete={sectionUpdate}/>
       </div>
