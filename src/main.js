@@ -7,12 +7,13 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import App from './component/app/app';
 import sectionsReducer from './reducer/main';
 import './styles/main.scss';
+import reporter from './lib/redux-reporter';
+import session from './lib/redux-session';
 
 //------------------------------------------------------------
 // Setting up the Store
 //------------------------------------------------------------
-const middleware = {};
-const store = createStore(sectionsReducer, composeWithDevTools(applyMiddleware(...middleware)));
+const store = createStore(sectionsReducer, composeWithDevTools(applyMiddleware(reporter, session)));
 //------------------------------------------------------------
 // Redering
 //------------------------------------------------------------
