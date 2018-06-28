@@ -10,9 +10,9 @@ Webpack
 
 ##### Usage
 Clone this repository
-```cd ~```
-```git clone https://github.com/Deliman206/31-34-budget-tracker-app.git``
-```git checkout lab32```
+```cd ~
+git clone https://github.com/Deliman206/31-34-budget-tracker-app.git
+git checkout lab32```
 
 Install the dependancies
 ```npm i```
