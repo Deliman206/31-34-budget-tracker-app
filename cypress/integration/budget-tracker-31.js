@@ -1,14 +1,18 @@
 describe('Check Input, Update, Remove', () => {
   it('clicks the link "type"', () => {
-    cy.visit('http://localhost:8081');
-    cy.get(':nth-child(1) > [type="text"]').type('Bulldog Food');
-    cy.get('[type="number"]').type('100');
-    cy.get('button').click();
-    cy.get('.section > .section-form > [type="text"]').clear().type('Cat Food');
-    cy.get('.section > .section-form > [type="number"]').clear().type('50');
-    cy.get('.section > .section-form > button').click(); 
-    cy.get(':nth-child(1) > [type="text"]').type('Bulldog Food');
-    cy.get(':nth-child(1) > [type="number"]').type('100');
-    cy.get(':nth-child(1) > button').click();
+    cy.visit('http://localhost:8080');
+    cy.get('input.newForm').type('Bulldog Stuff');
+    cy.contains('+ Category').click();
+    cy.get('input.createForm').type('Dog Food');
+    cy.get('input.createFormPrice').type('75');
+    cy.contains('Submit').click();
+    cy.get('input.newForm').type('Cat Stuff');
+    cy.contains('+ Category').click();
+    cy.get(':nth-child(3) > .expense-form > .createForm').type('Cat Food');
+    cy.get(':nth-child(3) > .expense-form > .createFormPrice').type('50');
+    cy.get(':nth-child(3) > .expense-form > button').click();
+    cy.get(':nth-child(3) > .expense-form > .createForm').type('Cat Tower');
+    cy.get(':nth-child(3) > .expense-form > .createFormPrice').type('75');
+    cy.get(':nth-child(3) > .expense-form > button').click();
   });
 });

@@ -4,14 +4,14 @@ import autoBind from '../../utils/';
 
 const defaultState = {
   title: '',
-  cost: '',
+  price: 0,
 };
 
-class SectionForm extends React.Component {
+class CategoryForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.section || defaultState;
-    autoBind.call(this, SectionForm);
+    this.state = this.props.category || defaultState;
+    autoBind.call(this, CategoryForm);
   }
   //-----------------------------------------------------
   // MEMBER FUNCTIONS
@@ -21,13 +21,13 @@ class SectionForm extends React.Component {
     if (name === 'title') {
       this.setState({ title: value });
     }
-    if (name === 'cost') {
-      this.setState({ cost: value });
-    }
   }
 
   handleSubmit(event) {
     event.preventDefault();
+    if (this.props.type === 'updateForm') {
+      this.props.onUpdate();
+    }
     this.props.onComplete(this.state);
     this.setState(defaultState);
   }
@@ -35,38 +35,32 @@ class SectionForm extends React.Component {
   // LIFE CYCLE HOOKS
   //-----------------------------------------------------
   render() {
-    const buttonText = this.props.section ? 'Update' : 'Create';
+    const buttonText = this.props.category ? 'Update' : '+';
+    const inputClass = this.props.type === 'newForm' ? 'newForm' : 'updateForm';
     return (
       <form
         onSubmit={this.handleSubmit}
-        className='section-form'>
+        className='category-form'>
 
         <input
           type='text'
           name='title'
-          placeholder='Expense'
+          placeholder='+ Category'
           value={this.state.title}
           onChange={this.handleChange}
+          className={inputClass}
         />
-        <input
-          type='number'
-          name='cost'
-          placeholder='Cost'
-          value={this.state.cost}
-          onChange={this.handleChange}
-        />
-        <button type='submit'>{buttonText} Expense</button>
-
+        <button type='submit'>{buttonText} Category {buttonText === 'Update' ? 'Title' : undefined}</button>
       </form>
     );
   }
 }
 
-SectionForm.propTypes = {
+CategoryForm.propTypes = {
   onComplete: PropTypes.func,
-  section: PropTypes.object, // Vinicio - used to update sections
+  onUpdate: PropTypes.func,
+  category: PropTypes.object,
+  type: PropTypes.string,
 };
 
-// Vinicio - you could bind your form to state in here
-
-export default SectionForm;
+export default CategoryForm;

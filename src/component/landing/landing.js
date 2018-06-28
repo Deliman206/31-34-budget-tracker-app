@@ -1,18 +1,42 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import * as sectionActions from '../../action/section';
-import SectionForm from '../section-form/section-form';
-import Section from '../section/section';
+
+import * as categoryActions from '../../action/category';
+import * as expenseActions from '../../action/expense';
+import CategoryForm from '../category-form/category-form';
+import Category from '../category/category';
+import ExpenseForm from '../expense-form/expense-form';
+import Expense from '../expense/expense';
 
 class Landing extends React.Component {
   render() {
-    const { sections, sectionCreate } = this.props;
+    const {
+      categories, categoryCreate, expenses, expenseCreate,  
+    } = this.props;
     return (
       <div className='landing'>
-        <SectionForm onComplete={sectionCreate}/>
+        <CategoryForm onComplete={categoryCreate} type='newForm' className='headerForm'/>
         {
-          sections.map((currentSection, i) => <Section section={currentSection} key={i}/>)
+          categories.map((currentCategory, i) => 
+          <div key={i}>
+            <Category category={currentCategory}/>
+            {/* <p>{currentCategory.price}</p> */}
+            <ExpenseForm type='createForm' onComplete={expenseCreate} parentId={currentCategory.id}/>
+            {
+              expenses.map((currentExpense, j) => {
+                if (currentExpense.categoryId === currentCategory.id) {
+                  return <Expense 
+                    key={j} 
+                    expense={currentExpense} 
+                    updateExpense={this.props.expenseUpdate}
+                    destroy={this.props.expenseDestroy}
+                  />;
+                }
+                return undefined;
+              })
+            }
+          </div>)
         }
       </div>
     );
@@ -20,19 +44,27 @@ class Landing extends React.Component {
 }
 
 Landing.propTypes = {
-  sections: PropTypes.array,
-  sectionCreate: PropTypes.func,
+  categories: PropTypes.array,
+  categoryCreate: PropTypes.func,
+  expenses: PropTypes.array,
+  expenseCreate: PropTypes.func,
+  expenseUpdate: PropTypes.func,
+  expenseDestroy: PropTypes.func,
 };
 
 const mapStateToProps = (state) => {
   return {
-    sections: state,
+    categories: state.category,
+    expenses: state.expense,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    sectionCreate: data => dispatch(sectionActions.create(data)),
+    categoryCreate: data => dispatch(categoryActions.create(data)),
+    expenseCreate: data => dispatch(expenseActions.create(data)),
+    expenseUpdate: data => dispatch(expenseActions.update(data)),
+    expenseDestroy: data => dispatch(expenseActions.destroy(data)),
   };
 };
 

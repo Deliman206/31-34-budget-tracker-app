@@ -5,14 +5,14 @@ import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import App from './component/app/app';
-import sectionsReducer from './reducer/section';
+import reducers from './reducers/index';
 import './styles/main.scss';
 
 //------------------------------------------------------------
 // Setting up the Store
 //------------------------------------------------------------
 const middleware = {};
-const store = createStore(sectionsReducer, composeWithDevTools(applyMiddleware(...middleware)));
+const store = createStore(reducers, composeWithDevTools(applyMiddleware(...middleware)));
 //------------------------------------------------------------
 // Redering
 //------------------------------------------------------------
